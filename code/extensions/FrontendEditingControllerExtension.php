@@ -83,7 +83,10 @@ class FrontendEditingControllerExtension extends Extension {
     }
 
     public function getConfig($page = null) {
-        $themeDir      = $this->owner->ThemeDir();
+    	if (($config = SiteConfig::current_site_config()) && $config->Theme) {
+    		SSViewer::set_theme($config->Theme);
+    	}
+        $themeDir      = SSViewer::get_theme_folder();
         $baseDir       = Director::baseURL();
         $baseHref      = Director::protocolAndHost() . $baseDir;
         $editHref      = ($page) ? $baseHref . $page->CMSEditLink() : null;

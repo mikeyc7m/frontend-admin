@@ -24,7 +24,7 @@ class FrontendEditorHTMLText extends HTMLText {
      * @return string
      */
     public function forTemplate() {
-        $isEditable = FrontendEditing::editingEnabled() && FrontendEditing::isEditable($this);
+        $isEditable = FrontendEditing::editingEnabled() && FrontendEditing::isEditable($this) && FrontendEditing::getID($this);
         if ($isEditable) {
             $this->processShortcodes = false;
         }

@@ -99,12 +99,6 @@
                                 .append(
                                         self.getToolsWrap()
                                         .append(
-                                                self.getToolsEditModeLabel().attr("for", self.getToolsEditMode().attr("id"))
-                                                )
-                                        .append(
-                                                self.getToolsEditMode()
-                                                )
-                                        .append(
                                                 self.getToolsHighlightLabel().attr("for", self.getToolsHighlight().attr("id"))
                                                 )
                                         .append(
@@ -124,7 +118,13 @@
                                 .append(
                                         self.getAdminBtnWrap()
                                         .append(
-                                                self.getAdminBtn()
+                                                self.getAdminBtn().css({width:"100%" , marginBottom : "5px"})
+                                        		)
+                                        .append(
+                                                self.getToolsEditModeLabel().attr("for", self.getToolsEditMode().attr("id"))
+                                                )
+                                        .append(
+                                                self.getToolsEditMode()
                                                 )
                                         );
 
@@ -132,11 +132,10 @@
                         if (!isNaN(settings.y)) {
                             self.css({top: settings.y + "px"});
                         }
-                        // Check to see if the user has set a width for the admin panel
+                        // Check to see if the user has set a width/height for the admin panel
                         if (!isNaN(settings.width)) {
                             self.getAdminFrameWrap().width(settings.width);
                         }
-                        // Check to see if the user has set a width for the admin panel
                         if (!isNaN(settings.height)) {
                             self.getAdminFrameWrap().height(settings.height);
                         }

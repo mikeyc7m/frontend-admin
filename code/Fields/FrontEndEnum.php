@@ -25,7 +25,7 @@ class FrontEndEnum extends Enum {
      * @return string
      */
     public function forTemplate() {
-        $isEditable = FrontendEditing::editingEnabled() && FrontendEditing::isEditable($this);
+        $isEditable = FrontendEditing::editingEnabled() && FrontendEditing::isEditable($this) && FrontendEditing::getID($this);
         $value      = parent::forTemplate();
         if ($isEditable) {
             $field = $this->formField(null, null, false, $value)->

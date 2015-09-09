@@ -25,7 +25,7 @@ class FrontEndBoolean extends Boolean {
      * @return string
      */
     public function forTemplate() {
-        $isEditable = FrontendEditing::editingEnabled() && FrontendEditing::isEditable($this);
+        $isEditable = FrontendEditing::editingEnabled() && FrontendEditing::isEditable($this) && FrontendEditing::getID($this);
         $value      = parent::forTemplate();
         if ($isEditable) {
             $field = $this->scaffoldSearchField($value)->

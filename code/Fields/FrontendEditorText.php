@@ -25,7 +25,7 @@ class FrontendEditorText extends Text {
      */
     public function forTemplate() {
         $value = parent::forTemplate();
-        if (FrontendEditing::editingEnabled() && FrontendEditing::isEditable($this) 
+        if (FrontendEditing::editingEnabled() && FrontendEditing::isEditable($this) && FrontendEditing::getID($this) 
                 // If this is a link, its probably in a href, so dont wrap it
                 // Whish there was a way to tell if fields are being rendered in an HTML attribute
                 && $this->Name !== "Link") {

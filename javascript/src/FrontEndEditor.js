@@ -97,13 +97,14 @@ var frontEndAdmin = frontEndAdmin || {};
             "insertdatetime media nonbreaking save table contextmenu directionality",
             "emoticons template paste textcolor  nonbreaking SSFEButtons"
         ],
-        toolbar1: "save undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | ssfeLink ssfeimage",
-        toolbar2: "print preview media | forecolor backcolor emoticons",
+        toolbar1: "save cancel | undo redo | cut copy paste | ssfeLink ssfeimage charmap table | searchreplace",
+        toolbar2: "styleselect bold italic removeformat | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | code",
         contextmenu: "ssfeLink ssfeimage inserttable | cell row column deletetable",
         image_advtab: true,
         remove_script_host: true,
         convert_urls: true,
         relative_urls: true,
+        menubar: false,
         document_base_url: frontEndAdmin.baseHref,
         extended_valid_elements: "-p[style|class]"
     });

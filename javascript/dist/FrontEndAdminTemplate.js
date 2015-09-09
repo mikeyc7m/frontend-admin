@@ -10,6 +10,6 @@ frontEndAdmin.mediaURL = "$mediaURL";
 frontEndAdmin.toggleIconClosed = "ui-icon-circle-triangle-e";
 frontEndAdmin.toggleIconOpen = "ui-icon-circle-triangle-w";
 frontEndAdmin.toggleLabel = "Admin";
-frontEndAdmin.editModeLabel = "Edit mode";
+frontEndAdmin.editModeLabel = "Edit&nbsp;mode";
 frontEndAdmin.highlightLabel = "Hightlight edit areas";
 frontEndAdmin.cmsLabelLink = "View fullscreen";
