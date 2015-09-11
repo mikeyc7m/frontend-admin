@@ -1,5 +1,5 @@
 {
-	"name" : "mikeyc7m/silverstripe-frontend-admin",
+	"name" : "gdmedia/silverstripe-frontend-admin",
 	"description" : "Front end admin for Silverstripe",
 	"license" : "BSD-3-Clause",
 	"type" : "silverstripe-module",
