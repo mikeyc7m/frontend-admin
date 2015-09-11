@@ -14,7 +14,7 @@ class FrontendEditingControllerExtension extends Extension {
      * @todo Use TinyMCEs Compressor 4.0.2 PHP
      */
     public function onBeforeInit() {
-
+    
         $canEdit        = FrontendEditing::ShowAdmin();
         $editingEnabled = FrontendEditing::editingEnabled();
         $minExt         = (Director::isDev()) ? "" : ".min";
@@ -32,6 +32,7 @@ class FrontendEditingControllerExtension extends Extension {
             Requirements::javascriptTemplate(FRONTEND_ADMIN_DIR . '/javascript/dist/FrontEndAdminTemplate' . $minExt . '.js', $this->getConfig($this->owner->data()));
             Requirements::css(FRAMEWORK_DIR . '/thirdparty/jquery-ui-themes/smoothness/jquery-ui.css');
             Requirements::javascript(FRONTEND_ADMIN_DIR . '/javascript/dist/FrontEndAdmin' . $minExt . '.js');
+        	Requirements::javascript(FRONTEND_ADMIN_DIR . '/javascript/dist/FrontEndLogin' . $minExt . '.js');
             Requirements::css(FRONTEND_ADMIN_DIR . '/css/frontend-admin' . $minExt . '.css');
 
             $this->owner->getResponse()->addHeader("X-DynamicCache-OptOut", true);
@@ -46,6 +47,14 @@ class FrontendEditingControllerExtension extends Extension {
             Requirements::javascript(FRONTEND_ADMIN_DIR . '/javascript/dist/FrontEndEditor' . $minExt . '.js');
             Requirements::css(FRONTEND_ADMIN_DIR . '/css/frontend-editor' . $minExt . '.css');
         }
+    }
+    
+    public function onAfterInit() {
+    	$canEdit        = FrontendEditing::ShowAdmin();
+    	$minExt         = (Director::isDev()) ? "" : ".min";
+    	if( !$canEdit ) {
+    		Requirements::javascript(FRONTEND_ADMIN_DIR . '/javascript/dist/FrontEndLogin' . $minExt . '.js');
+    	}
     }
 
     /**
@@ -87,6 +96,7 @@ class FrontendEditingControllerExtension extends Extension {
     		SSViewer::set_theme($config->Theme);
     	}
         $themeDir      = SSViewer::get_theme_folder();
+        $currentUser   = Member::currentUser();
         $baseDir       = Director::baseURL();
         $baseHref      = Director::protocolAndHost() . $baseDir;
         $editHref      = ($page) ? $baseHref . $page->CMSEditLink() : null;
@@ -103,7 +113,8 @@ class FrontendEditingControllerExtension extends Extension {
             'linkURL'       => Controller::join_links(FrontEndEditorToolbar::create()->Link(), "LinkForm"),
             'mediaURL'      => Controller::join_links(FrontEndEditorToolbar::create()->Link(), "MediaForm"),
             'themeDir'      => $themeDir,
-            'baseDir'       => $baseDir,
+        	'currentUser'   => $currentUser->getTitle(),
+        	'baseDir'       => $baseDir,
             'baseHref'      => $baseHref,
             'editHref'      => $editHref,
             'pageHierarchy' => Convert::raw2json(array_reverse($pageHierarchy))

@@ -15,7 +15,7 @@ class FrontendEditorVarchar extends Varchar {
      * @param array $record
      */
     public function setValue($value, $record = null) {
-        FrontendEditing::setValue($this, $value, $record);
+    	FrontendEditing::setValue($this, $value, $record);
         parent::setValue($value, $record);
     }
 
